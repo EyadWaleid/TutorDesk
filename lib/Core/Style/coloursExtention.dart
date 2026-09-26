@@ -6,33 +6,33 @@ import 'package:flutter/material.dart';
   Color textColour;
   Color enabledButtonColour;
   Color textGrey;
-  Color alertTypeBar;
+  Color primaryColour ;
 
   TutorDeskColours({
     required this.backgroundColour,
     required this.containerColour,
-    required this.alertTypeBar,
     required this.enabledButtonColour,
     required this.textColour,
     required this.textGrey,
+    required this.primaryColour,
   });
 
   @override
   ThemeExtension<TutorDeskColours> copyWith({
     Color? backgroundColour,
     Color? containerColour,
-    Color? alertTypeBar,
     Color? enabledButtonColour,
     Color? textColour,
     Color? textGrey,
+    Color? primaryColour,
   }) {
     return TutorDeskColours(
       backgroundColour: backgroundColour ?? this.backgroundColour,
       containerColour: containerColour ?? this.containerColour,
-      alertTypeBar: alertTypeBar ?? this.alertTypeBar,
       enabledButtonColour: enabledButtonColour ?? this.enabledButtonColour,
       textColour: textColour ?? this.textColour,
       textGrey: textGrey ?? this.textGrey,
+      primaryColour: primaryColour ?? this.primaryColour,
     );
   }
 
@@ -49,14 +49,13 @@ import 'package:flutter/material.dart';
         t,
       )!,
       containerColour: Color.lerp(containerColour, other.containerColour, t)!,
-      alertTypeBar: Color.lerp(alertTypeBar, other.alertTypeBar, t)!,
       enabledButtonColour: Color.lerp(
         enabledButtonColour,
         other.enabledButtonColour,
         t,
       )!,
       textColour: Color.lerp(textColour, other.textColour, t)!,
-      textGrey: Color.lerp(textGrey, other.textGrey, t)!,
+      textGrey: Color.lerp(textGrey, other.textGrey, t)!, primaryColour: Color.lerp(primaryColour, other.primaryColour, t)!
     );
   }
 }
