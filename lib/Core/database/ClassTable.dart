@@ -8,7 +8,4 @@ class ClassTable extends Table{
   IntColumn get salaryPerStudent => integer()();
   TextColumn get time => text()();
   TextColumn get date => text()();
-  TextColumn get whatsAppGroup => text()();
-
-
- }
+  TextColumn get whatsAppGroup => text()();}

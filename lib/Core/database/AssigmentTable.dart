@@ -6,3 +6,4 @@ class AssignmentTable extends Table {
   TextColumn get date => text()();
 }
 
+
