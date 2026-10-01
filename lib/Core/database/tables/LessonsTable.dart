@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:tutordesk/Core/database/ClassTable.dart';
+import 'package:tutordesk/Core/database/tables/ClassTable.dart';
 
 class LessonsTable extends Table {
   IntColumn get id => integer().autoIncrement()();

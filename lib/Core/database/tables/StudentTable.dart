@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
-import 'package:tutordesk/Core/database/AssigmentTable.dart';
-import 'package:tutordesk/Core/database/ClassTable.dart';
+import 'package:tutordesk/Core/database/tables/AssigmentTable.dart';
+import 'package:tutordesk/Core/database/tables/ClassTable.dart';
 import 'ExamTable.dart';
 import 'LessonsTable.dart';
 

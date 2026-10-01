@@ -1,13 +1,16 @@
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
+import 'package:tutordesk/Core/database/tables/AssigmentTable.dart';
+import 'package:tutordesk/Core/database/tables/ClassTable.dart';
+import 'package:tutordesk/Core/database/tables/ExamTable.dart';
+import 'package:tutordesk/Core/database/tables/LessonsTable.dart';
+import 'package:tutordesk/Core/database/tables/StudentTable.dart';
 
-import 'AssigmentTable.dart';
-import 'ClassTable.dart';
-import 'ExamTable.dart';
-import 'LessonsTable.dart';
-import 'StudentTable.dart';
+import 'DAO/academic_dao.dart';
+import 'DAO/assessment_dao.dart';
 
-part 'database.g.dart';
+
+part 'AppDatabase.g.dart';
 
 @DriftDatabase(
   tables: [
@@ -16,6 +19,10 @@ part 'database.g.dart';
     LessonsTable,
     AssignmentTable,
     ExamTable,
+  ],
+  daos: [
+    AcademicDao,
+    AssessmentDao,
   ],
 )
 class AppDatabase extends _$AppDatabase {
