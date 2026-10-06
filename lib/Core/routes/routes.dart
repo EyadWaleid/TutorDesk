@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:tutordesk/Screens/HomeScreen/presentation/view/homeScreen.dart';
 import 'package:tutordesk/main.dart';
 class Routing {
   static final  GoRouter router = GoRouter(
@@ -6,7 +7,7 @@ class Routing {
   routes: [
   GoRoute(
   path: '/',
-  builder: (context, state) => const MyApp(),
+  builder: (context, state) => const HomeScreen(),
   ),
   // GoRoute(
   // path: '/details/:id',

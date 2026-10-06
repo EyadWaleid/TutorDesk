@@ -13,7 +13,7 @@ class ThemeApp {
             enabledButtonColour: AppColors.enabledButtonLightColour,
             textColour: AppColors.textLightColour,
             textGrey: AppColors.lightTextGrey,
-            primaryColour: AppColors.primaryLightColour,)
+            primaryColour: AppColors.primaryLightColour, primaryBlack: AppColors.primaryBlack,)
       ]
   );
   static ThemeData darkTheme = ThemeData(
@@ -23,7 +23,7 @@ class ThemeApp {
             enabledButtonColour: AppColors.enabledButtonDarkColour,
             textColour: AppColors.textDarkColour,
             textGrey: AppColors.darkTextGrey,
-            primaryColour: AppColors.primaryDarkColour,)
+            primaryColour: AppColors.primaryDarkColour, primaryBlack:AppColors.primaryBlack,)
       ]
   );
 }

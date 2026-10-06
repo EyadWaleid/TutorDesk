@@ -15,4 +15,5 @@ class AppColors {
   static const Color darkTextGrey = Color(0xFF8B9AAF);
   static const Color lightAlertTypeBar = Color(0xFFEEF3FF);
   static const Color darkAlertTypeBar = Color(0xFF1A2A4A);
+  static const Color primaryBlack = Color(0xFF1C1B18);
 }
