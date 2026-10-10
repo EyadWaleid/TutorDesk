@@ -57,6 +57,9 @@ class $AssetsImagesGen {
   final SvgGenImage walletIcon = const SvgGenImage(
     'lib/Core/assets/images/walletIcon.svg',
   );
+  final SvgGenImage whatsApp = const SvgGenImage(
+    'lib/Core/assets/images/whatsApp.svg',
+  );
 }
 
 class AssetGenImage {

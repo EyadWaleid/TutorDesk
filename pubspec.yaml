@@ -52,6 +52,9 @@ dev_dependencies:
   build_runner: ^2.15.1
   go_router:
   flutter_screenutil:
+  bloc:
+  flutter_bloc:
+
 
 
 

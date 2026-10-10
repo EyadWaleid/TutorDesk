@@ -3,10 +3,7 @@ import '../AppDatabase.dart';
 import '../tables/ClassTable.dart';
 import '../tables/LessonsTable.dart';
 import '../tables/StudentTable.dart';
-
-
 part 'academic_dao.g.dart';
-
 @DriftAccessor(tables: [ClassTable, StudentTable, LessonsTable])
 class AcademicDao extends DatabaseAccessor<AppDatabase> with _$AcademicDaoMixin {
   AcademicDao(super.db);
