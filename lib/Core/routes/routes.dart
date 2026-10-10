@@ -1,13 +1,19 @@
 import 'package:go_router/go_router.dart';
+import 'package:tutordesk/Screens/HomeScreen/presentation/Cubit/home_cubit.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/view/homeScreen.dart';
 import 'package:tutordesk/main.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 class Routing {
   static final  GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
   GoRoute(
   path: '/',
-  builder: (context, state) => const HomeScreen(),
+  builder: (context, state) => BlocProvider<HomeCubit>(
+    create: (context) => HomeCubit(),
+    child: HomeScreen(),
+  ),
   ),
   // GoRoute(
   // path: '/details/:id',
