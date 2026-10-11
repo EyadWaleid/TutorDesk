@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../Core/Style/coloursExtention.dart';
 import '../../../../generated/assets.dart';
 
-class UpcominSessionsWidget extends StatelessWidget {
-  const UpcominSessionsWidget({
+class UpcomingSessionsWidget extends StatelessWidget {
+  const UpcomingSessionsWidget({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-
-    return Padding(
+    return  BlocBuilder(
+      buildWhen:(previous, current) => current != previous ,
+        builder: (context, state) => Padding(
       padding: EdgeInsets.all(16),
 
       child:ListView.separated(
@@ -24,9 +25,8 @@ class UpcominSessionsWidget extends StatelessWidget {
           return SessionCard(className: '3bod', subject: 'Math', subTitle: '10:pm', themeColor: themeColors!);
         },
       ),
-    );
+    ));
   }
-
   Container SessionCard({required String className , required String subject , required  String subTitle , required TutorDeskColours themeColor }) {
     return Container(
           height: 66.28.h,

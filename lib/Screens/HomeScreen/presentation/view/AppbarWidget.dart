@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tutordesk/Screens/HomeScreen/presentation/Cubit/home_cubit.dart';
 import '../../../../Core/Style/AppColours.dart';
 import '../../../../Core/Style/coloursExtention.dart';
 
@@ -9,7 +11,10 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-    return  Container(
+    return  BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (previous, current) =>  current != previous,
+  builder: (context, state) {
+    return Container(
       color:themeColors?.primaryColour,
       height: 200.45.h,
       child: Padding(
@@ -49,6 +54,8 @@ class AppBarWidget extends StatelessWidget {
         ),
       ),
     );
+  },
+);
   }
   Container TeacherDetails({required  IconData icon ,  required String data , required String title }) {
     return Container(width:  112.2.w, height: 84.45.h ,

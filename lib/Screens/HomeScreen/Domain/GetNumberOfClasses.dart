@@ -4,5 +4,6 @@ class GetNumberOFClasses{
   HomeRepo _homeRepo ;
   GetNumberOFClasses({required this._homeRepo});
   int getNumberOfGroups() {
-    return _homeRepo.getNumberOfGroups();}
+    return _homeRepo.getNumberOfClasses();
+  }
 }

@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  UpcominSessionsWidget()
+                  UpcomingSessionsWidget()
                 ],
               ),
             );

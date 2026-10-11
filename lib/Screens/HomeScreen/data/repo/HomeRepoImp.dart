@@ -13,7 +13,7 @@ class HomeRepoImp implements HomeRepo{
   }
   @override
   int getNumberOfGroups() {
-   return 10;
+    return 10;
   }
   @override
   int getNumberOfSessions() {
@@ -21,6 +21,11 @@ class HomeRepoImp implements HomeRepo{
   }
   @override
   int getNumberOfStudents() {
-      return 50;
+    return 50;
+  }
+
+  @override
+  int getNumberOfClasses() {
+  return 10;
   }
 }
