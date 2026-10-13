@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../Core/Style/AppColours.dart';
 import '../../../../Core/Style/coloursExtention.dart';
 import '../../../../generated/assets.dart';
+import '../Cubit/home_cubit.dart';
 
 class UpcomingSessionsWidget extends StatelessWidget {
   const UpcomingSessionsWidget({
@@ -13,19 +15,29 @@ class UpcomingSessionsWidget extends StatelessWidget {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
     return  BlocBuilder(
       buildWhen:(previous, current) => current != previous ,
-        builder: (context, state) => Padding(
-      padding: EdgeInsets.all(16),
+        builder: (context, state) {
+              if(state is  UpcomingSessionsLoad) {
+                return CircularProgressIndicator(color:AppColors.primaryLightColour,);
+              }
 
-      child:ListView.separated(
-        separatorBuilder: (context, index) => SizedBox(height: 8.h,),
-        shrinkWrap: true, // Allows the ListView to calculate its height based on children
-        physics: const NeverScrollableScrollPhysics(), // Disables scrolling for ListView so SingleChildScrollView handles it
-        itemCount: 5, // Make sure to set an itemCount
-        itemBuilder: (context, index) {
-          return SessionCard(className: '3bod', subject: 'Math', subTitle: '10:pm', themeColor: themeColors!);
-        },
-      ),
-    ));
+              if(state is UpcomingSessionsLoaded){
+                return Padding(
+                  padding: EdgeInsets.all(16),
+
+                  child:ListView.separated(
+                    separatorBuilder: (context, index) => SizedBox(height: 8.h,),
+                    shrinkWrap: true, // Allows the ListView to calculate its height based on children
+                    physics: const NeverScrollableScrollPhysics(), // Disables scrolling for ListView so SingleChildScrollView handles it
+                    itemCount: 5, // Make sure to set an itemCount
+                    itemBuilder: (context, index) {
+                      return SessionCard(className: '3bod', subject: 'Math', subTitle: '10:pm', themeColor: themeColors!);
+                    },
+                  ),
+                );
+              } 
+              return SizedBox();
+        });
+
   }
   Container SessionCard({required String className , required String subject , required  String subTitle , required TutorDeskColours themeColor }) {
     return Container(

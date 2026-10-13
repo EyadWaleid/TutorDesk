@@ -11,6 +11,14 @@ final class TeacherWorkDataLoaded extends HomeState{
   final TeacherWorkData teacherWorkData;
   TeacherWorkDataLoaded({required this.teacherWorkData});
 }
+final class TeacherWorkDataEmpty extends HomeState{
+  final String message;
+  TeacherWorkDataEmpty({required this.message});
+}
+final class TeacherWorkDataFirstTime extends HomeState{
+  final String message;
+  TeacherWorkDataFirstTime({required this.message});}
+
 final class TeacherWorkDataError extends HomeState{
   final String errorMessage;
   TeacherWorkDataError({required this.errorMessage});
@@ -25,5 +33,9 @@ final class UpcomingSessionsLoad extends HomeState{
 final class UpcomingSessionsLoaded extends HomeState{
   final List <Sessions> sessions;
   UpcomingSessionsLoaded({required this.sessions});
+}
+final class UpcomingSessionsEmpty extends HomeState{
+  final String message;
+  UpcomingSessionsEmpty({required this.message});
 }
 
