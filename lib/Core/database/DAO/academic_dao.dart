@@ -11,33 +11,46 @@ class AcademicDao extends DatabaseAccessor<AppDatabase> with _$AcademicDaoMixin 
   // ==========================================
   // 1. CLASS OPERATIONS
   // ==========================================
-
+  /// Stream the number of class
+  Stream<int>watchNumberOfUpcomingSessions(){
+    final countExpression = classTable.id.count();
+    final query = selectOnly(classTable)..addColumns([countExpression]);
+    return query.map((row) => row.read(countExpression)!).watchSingle();
+  }
+  /// stream the upcomingSessions
+  Stream<List<ClassTableData>> watchUpcomingSessions(DateTime from, {int limit = 5}) {
+    return (select(classTable)
+      ..where((s) => s.date.equals(from.toString()))
+      ..orderBy([(s) => OrderingTerm.asc(s.time)])
+      ..limit(limit))
+        .watch();
+  }
   /// Watch all classes as a live Stream
   Stream<List<ClassTableData>> watchAllClasses() => select(classTable).watch();
-
   /// Fetch a single class by ID
   Future<ClassTableData> getClassById(int id) =>
       (select(classTable)..where((c) => c.id.equals(id))).getSingle();
-
   /// Insert a new class
   Future<int> insertClass(ClassTableCompanion classData) =>
       into(classTable).insert(classData);
-
   /// Update class details
   Future<bool> updateClass(ClassTableData classData) =>
       update(classTable).replace(classData);
-
   /// Delete class (Cascades deletion to associated students & lessons)
   Future<int> deleteClass(int id) =>
       (delete(classTable)..where((c) => c.id.equals(id))).go();
-
   // ==========================================
   // 2. STUDENT OPERATIONS
   // ==========================================
 
   /// Watch all students
   Stream<List<StudentTableData>> watchAllStudents() => select(studentTable).watch();
-
+  //// Watch number of students
+  Stream<int> watchNumberOfStudents() {
+    final countExpression = studentTable.id.count();
+    final query = selectOnly(studentTable)..addColumns([countExpression]);
+    return query.map((row) => row.read(countExpression)!).watchSingle();
+  }
   /// Watch students filtered by class ID
   Stream<List<StudentTableData>> watchStudentsInClass(int classId) {
     return (select(studentTable)..where((s) => s.classId.equals(classId))).watch();

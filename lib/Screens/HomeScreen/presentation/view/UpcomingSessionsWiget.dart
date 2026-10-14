@@ -13,68 +13,163 @@ class UpcomingSessionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-    return  BlocBuilder(
-      buildWhen:(previous, current) => current != previous ,
+    return BlocBuilder(
+        buildWhen: (previous, current) => current != previous,
         builder: (context, state) {
-              if(state is  UpcomingSessionsLoad) {
-                return CircularProgressIndicator(color:AppColors.primaryLightColour,);
-              }
-
-              if(state is UpcomingSessionsLoaded){
-                return Padding(
-                  padding: EdgeInsets.all(16),
-
-                  child:ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(height: 8.h,),
-                    shrinkWrap: true, // Allows the ListView to calculate its height based on children
-                    physics: const NeverScrollableScrollPhysics(), // Disables scrolling for ListView so SingleChildScrollView handles it
-                    itemCount: 5, // Make sure to set an itemCount
-                    itemBuilder: (context, index) {
-                      return SessionCard(className: '3bod', subject: 'Math', subTitle: '10:pm', themeColor: themeColors!);
-                    },
-                  ),
-                );
-              } 
-              return SizedBox();
+          if (state is UpcomingSessionsLoad) {
+            return CircularProgressIndicator(
+              color: AppColors.primaryLightColour,);
+          }
+          if (state is UpcomingSessionsEmpty) {}
+          if (state is UpcomingSessionsFirstTime) {
+            return FirstTimeUpcomingSessions(themeColors);
+          }
+          if (state is UpcomingSessionsLoaded) {
+            return UpcomingSesssionsFound(themeColors);
+          }
+          return SizedBox();
         });
-
   }
-  Container SessionCard({required String className , required String subject , required  String subTitle , required TutorDeskColours themeColor }) {
+
+  Padding UpcomingSesssionsFound(TutorDeskColours? themeColors) {
+    return Padding(
+            padding: EdgeInsets.all(16),
+
+            child: ListView.separated(
+              separatorBuilder: (context, index) => SizedBox(height: 8.h,),
+              shrinkWrap: true,
+              // Allows the ListView to calculate its height based on children
+              physics: const NeverScrollableScrollPhysics(),
+              // Disables scrolling for ListView so SingleChildScrollView handles it
+              itemCount: 5,
+              // Make sure to set an itemCount
+              itemBuilder: (context, index) {
+                return SessionCard(className: '3bod',
+                    subject: 'Math',
+                    subTitle: '10:pm',
+                    themeColor: themeColors!);
+              },
+            ),
+          );
+  }
+
+  Container FirstTimeUpcomingSessions(TutorDeskColours? themeColors) {
     return Container(
-          height: 66.28.h,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12 ,vertical: 10 ),
-            child: Row(
-              children: [
-                Container(
-                  width: 40.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFE4F2F2),
-                    border: Border.all(style: BorderStyle.none),
-                    borderRadius: BorderRadius.circular(16.r),
-                  ),
-                  child: Center(
-                    child: Assets.core.assets.images.clockIcon.svg(
-                      width: 16.w,
-                      height: 16.h,
-                    ),
-                  ),
+            width: 385.w,
+            height: 312.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16.r),
+              // Figma corner radius: 16
+              border: Border.all(
+                color: Colors.black.withOpacity(0.08),
+                // Figma stroke: #000000 8%
+                width: 1.14,
+              ),
+              boxShadow: [
+                // Drop Shadow 1
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  offset: const Offset(0, 1),
+                  blurRadius: 3.r,
+                  spreadRadius: 0,
                 ),
-                SizedBox(width: 12,),
-                Column(
-                  children: [
-                    Text(subject , style:  TextStyle(fontSize:14.sp, fontWeight: FontWeight.w500 , color: themeColor!.primaryBlack),),
-                    Text(subTitle , style:  TextStyle( fontSize:12.sp, color:themeColor.textGrey ),)
-                  ],
-                )
+                // Drop Shadow 2
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.10),
+                  // Figma color: #000000 10%
+                  offset: const Offset(0, 1),
+                  blurRadius: 2.r,
+                  spreadRadius: -1
+                      .r, // Spread -1 supported directly in BoxShadow
+                ),
               ],
             ),
-          ),
-        );
+            child: Column(
+              children: [
+                Container(
+                  width: 72.w,
+                  height: 72.h,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFE4F2F2),
+                    borderRadius: BorderRadius.circular(36.r),
+                  ),
+                  child: Center(
+                    child: Icon(Icons.school_outlined,
+                      color: themeColors?.primaryColour,),
+                  ),
+                ),
+                Text("Set up your first class",style: TextStyle(color: themeColors?.primaryBlack, fontSize:16.sp,fontWeight:FontWeight.w600)),
+                Text(
+                    "Add students and create a group to start scheduling sessions.", style: TextStyle(color: themeColors?.textGrey, fontSize:14.sp,fontWeight:FontWeight.w300 ,),),
+                MaterialButton(onPressed: () {},
+                  color: themeColors?.primaryColour,
+                  child: Text("Add your first student", style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),),
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),),
+                MaterialButton(onPressed: () {},
+                  color: Colors.white,
+                  child: Text("Create a group"),
+                  elevation: 3,
+                  shape:RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    side: BorderSide(
+                      color: themeColors!.textGrey,
+                      width: 1
+                    )
+
+                  ),),
+
+              ],
+            ),
+          );
+  }
+
+  Container SessionCard(
+      {required String className, required String subject, required String subTitle, required TutorDeskColours themeColor }) {
+    return Container(
+      height: 66.28.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        child: Row(
+          children: [
+            Container(
+              width: 40.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE4F2F2),
+                border: Border.all(style: BorderStyle.none),
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              child: Center(
+                child: Assets.core.assets.images.clockIcon.svg(
+                  width: 16.w,
+                  height: 16.h,
+                ),
+              ),
+            ),
+            SizedBox(width: 12,),
+            Column(
+              children: [
+                Text(subject, style: TextStyle(fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: themeColor!.primaryBlack),),
+                Text(subTitle, style: TextStyle(
+                    fontSize: 12.sp, color: themeColor.textGrey),)
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
