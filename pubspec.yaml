@@ -57,7 +57,7 @@ dev_dependencies:
   flutter_screenutil:
   bloc:
   flutter_bloc:
-
+  get_it: 
 
 
 

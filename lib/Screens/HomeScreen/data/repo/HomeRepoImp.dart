@@ -22,11 +22,11 @@ class HomeRepoImp implements HomeRepo{
   }
   @override
   Stream<int> getNumberOfStudents() {
-    return  ;
+    return  _academicDao.watchNumberOfStudents();
   }
   @override
   Stream<int> getNumberOfClasses() {
-  return ;
+  return _academicDao.watchNumberOfUpcomingSessions();
   }
   List<Sessions> getUpcomingSessionsMockUp() {
     return [
@@ -68,8 +68,4 @@ class HomeRepoImp implements HomeRepo{
   int getNumberOfGroupsMockUp() {
     return 10;
   }
-
-
-
-
 }

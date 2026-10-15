@@ -8,19 +8,21 @@ import 'package:tutordesk/Screens/HomeScreen/data/Models/Sessions.dart';
 import 'package:tutordesk/Screens/HomeScreen/data/repo/HomeRepoImp.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/Model/TeacherWorkData.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../data/DI/get_it.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  final GetUserUpcomingSessions getUserUpcomingSession ;
+  final GetNumberOfStudents getNumberOfStudents ;
+  final GetNumberOfSessions getNumberOfSessions;
+  final GetNumberOFClasses getNumberOfClasses ;
+  HomeCubit({required this.getUserUpcomingSession, required this.getNumberOfStudents, required this.getNumberOfSessions, required this.getNumberOfClasses}) : super(HomeInitial());
   static HomeCubit get(context)=>BlocProvider.of(context);
-  final GetUserUpcomingSessions _getUserUpcomingSession = GetUserUpcomingSessions(homeRepo: HomeRepoImp());
-  final GetNumberOfStudents _getNumberOfStudents = GetNumberOfStudents(homeRepo: HomeRepoImp());
-  final GetNumberOfSessions _getNumberOfSessions = GetNumberOfSessions(homeRepo: HomeRepoImp());
-  final GetNumberOFClasses _getNumberOfClasses = GetNumberOFClasses(homeRepo: HomeRepoImp());
  void getTeacherWorkData() {
-    final numberOfStudents = _getNumberOfStudents.getNumberOfStudents();
-    final numberOfSessions = _getNumberOfSessions.getNumberOfSessions();
-    final numberOfClasses = _getNumberOfClasses.getNumberOfGroups();
+    final numberOfStudents = getNumberOfStudents.getNumberOfStudents();
+    final numberOfSessions = getNumberOfSessions.getNumberOfSessions();
+    final numberOfClasses = getNumberOfClasses.getNumberOfGroups();
     emit(TeacherWorkDataLoading());
     try {
       emit(TeacherWorkDataLoaded(
@@ -33,12 +35,11 @@ class HomeCubit extends Cubit<HomeState> {
     } catch (e) {
       emit(TeacherWorkDataError(errorMessage: 'Failed to get teacher work data: $e'));
     }
-
   }
   void getUpcomingSessions() {
     emit(UpcomingSessionsLoad());
     try {
-      final sessions = _getUserUpcomingSession.getUpcomingSessions();
+      final sessions = getUserUpcomingSession.getUpcomingSessions();
       emit(UpcomingSessionsLoaded(sessions: sessions));
     } catch (e) {
       emit(UpcomingSessionsError(errorMessage: 'Failed to get upcoming sessions: $e'));
