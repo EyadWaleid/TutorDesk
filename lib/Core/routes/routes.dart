@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:tutordesk/Screens/HomeScreen/data/DI/get_it.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/Cubit/home_cubit.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/view/homeScreen.dart';
 import 'package:tutordesk/main.dart';
@@ -11,7 +12,7 @@ class Routing {
   GoRoute(
   path: '/',
   builder: (context, state) => BlocProvider<HomeCubit>(
-    create: (context) => HomeCubit(),
+    create: (context) => getIt<HomeCubit>(),
     child: HomeScreen(),
   ),
   ),

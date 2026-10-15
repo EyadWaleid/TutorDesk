@@ -5,11 +5,9 @@ import 'package:tutordesk/Screens/HomeScreen/Domain/GetNumberOfSessions.dart';
 import 'package:tutordesk/Screens/HomeScreen/Domain/GetNumberOfStudents.dart';
 import 'package:tutordesk/Screens/HomeScreen/Domain/GetUserUpcomingSessions.dart';
 import 'package:tutordesk/Screens/HomeScreen/data/Models/Sessions.dart';
-import 'package:tutordesk/Screens/HomeScreen/data/repo/HomeRepoImp.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/Model/TeacherWorkData.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/DI/get_it.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
