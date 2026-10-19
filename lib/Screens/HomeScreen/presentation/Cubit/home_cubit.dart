@@ -71,7 +71,13 @@ class HomeCubit extends Cubit<HomeState> {
         .getUpcomingSessions()
         .listen(
           (sessions) {
-        emit(UpcomingSessionsLoaded(sessions: sessions));
+            if(sessions.isEmpty){
+              emit(UpcomingSessionsEmpty(message: "The sessions is empty"));
+            }
+            else {
+              emit(UpcomingSessionsLoaded(sessions: sessions));
+
+            }
       },
       onError: (error) {
         emit(UpcomingSessionsError(

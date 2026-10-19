@@ -3,14 +3,17 @@ import 'package:tutordesk/Core/database/AppDatabase.dart';
 import 'package:tutordesk/Core/database/DAO/academic_dao.dart';
 import 'package:tutordesk/Screens/HomeScreen/data/repo/HomeRepo.dart';
 import 'package:tutordesk/Screens/HomeScreen/data/repo/HomeRepoImp.dart';
-
-import '../../Domain/GetNumberOfClasses.dart';
-import '../../Domain/GetNumberOfSessions.dart';
-import '../../Domain/GetNumberOfStudents.dart';
-import '../../Domain/GetUserUpcomingSessions.dart';
-import '../../presentation/Cubit/home_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../Core/database/shared_perferance/shared_perferance.dart';
+import '../../Screens/HomeScreen/Domain/GetNumberOfClasses.dart';
+import '../../Screens/HomeScreen/Domain/GetNumberOfSessions.dart';
+import '../../Screens/HomeScreen/Domain/GetNumberOfStudents.dart';
+import '../../Screens/HomeScreen/Domain/GetUserUpcomingSessions.dart';
+import '../../Screens/HomeScreen/presentation/Cubit/home_cubit.dart';
 final getIt = GetIt.instance;
-void setupLocator() {
+Future<void> setupLocator() async {
+  final sharedPrefs = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<AppPreferences>(() => AppPreferences(sharedPrefs));
   // 1. Register the AppDatabase instance
   getIt.registerLazySingleton<AppDatabase>(() => AppDatabase(),
     dispose: (db) => db.close(),

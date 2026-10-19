@@ -63,7 +63,6 @@ class HomeScreen extends StatelessWidget {
             );
           }
           return SizedBox();
-
         },
       ),
     );

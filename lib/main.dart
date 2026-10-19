@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'Core/DI/get_it.dart';
 import 'Core/Style/ThemeApp.dart';
 import 'Core/routes/routes.dart';
-import 'Screens/HomeScreen/data/DI/get_it.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
-   setupLocator();
+  await setupLocator();
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:tutordesk/Screens/HomeScreen/data/DI/get_it.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/Cubit/home_cubit.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/view/homeScreen.dart';
-import 'package:tutordesk/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../DI/get_it.dart';
 
 class Routing {
   static final  GoRouter router = GoRouter(
