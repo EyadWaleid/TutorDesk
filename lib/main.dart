@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Core/Style/ThemeApp.dart';
 import 'Core/routes/routes.dart';
+import 'Screens/HomeScreen/data/DI/get_it.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+   setupLocator();
   runApp(const MyApp());
 }
 

@@ -20,7 +20,9 @@ class UpcomingSessionsWidget extends StatelessWidget {
             return CircularProgressIndicator(
               color: AppColors.primaryLightColour,);
           }
-          if (state is UpcomingSessionsEmpty) {}
+          if (state is UpcomingSessionsEmpty) {
+
+          }
           if (state is UpcomingSessionsFirstTime) {
             return FirstTimeUpcomingSessions(themeColors);
           }
@@ -55,79 +57,94 @@ class UpcomingSessionsWidget extends StatelessWidget {
 
   Container FirstTimeUpcomingSessions(TutorDeskColours? themeColors) {
     return Container(
-            width: 385.w,
-            height: 312.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16.r),
-              // Figma corner radius: 16
-              border: Border.all(
-                color: Colors.black.withOpacity(0.08),
-                // Figma stroke: #000000 8%
-                width: 1.14,
+      width: 385.w,
+      height: 312.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.r),
+        // Figma corner radius: 16
+        border: Border.all(
+          color: Colors.black.withOpacity(0.08),
+          // Figma stroke: #000000 8%
+          width: 1.14,
+        ),
+        boxShadow: [
+          // Drop Shadow 1
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 1),
+            blurRadius: 3.r,
+            spreadRadius: 0,
+          ),
+          // Drop Shadow 2
+          BoxShadow(
+            color: Colors.black.withOpacity(0.10),
+            // Figma color: #000000 10%
+            offset: const Offset(0, 1),
+            blurRadius: 2.r,
+            spreadRadius: -1
+                .r, // Spread -1 supported directly in BoxShadow
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 72.w,
+              height: 72.h,
+              decoration: BoxDecoration(
+                color: Color(0xFFE4F2F2),
+                borderRadius: BorderRadius.circular(36.r),
               ),
-              boxShadow: [
-                // Drop Shadow 1
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  offset: const Offset(0, 1),
-                  blurRadius: 3.r,
-                  spreadRadius: 0,
-                ),
-                // Drop Shadow 2
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.10),
-                  // Figma color: #000000 10%
-                  offset: const Offset(0, 1),
-                  blurRadius: 2.r,
-                  spreadRadius: -1
-                      .r, // Spread -1 supported directly in BoxShadow
-                ),
-              ],
+              child: Center(
+                child: Icon(Icons.school_outlined,
+                  color: themeColors?.primaryColour,size: 40,),
+              ),
             ),
-            child: Column(
-              children: [
-                Container(
-                  width: 72.w,
-                  height: 72.h,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFE4F2F2),
-                    borderRadius: BorderRadius.circular(36.r),
-                  ),
-                  child: Center(
-                    child: Icon(Icons.school_outlined,
-                      color: themeColors?.primaryColour,),
-                  ),
-                ),
-                Text("Set up your first class",style: TextStyle(color: themeColors?.primaryBlack, fontSize:16.sp,fontWeight:FontWeight.w600)),
-                Text(
-                    "Add students and create a group to start scheduling sessions.", style: TextStyle(color: themeColors?.textGrey, fontSize:14.sp,fontWeight:FontWeight.w300 ,),),
-                MaterialButton(onPressed: () {},
-                  color: themeColors?.primaryColour,
-                  child: Text("Add your first student", style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),),
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),),
-                MaterialButton(onPressed: () {},
-                  color: Colors.white,
-                  child: Text("Create a group"),
-                  elevation: 3,
-                  shape:RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    side: BorderSide(
-                      color: themeColors!.textGrey,
-                      width: 1
-                    )
+            SizedBox(height: 16.h,),
+            Text("Set up your first class",style: TextStyle(color: themeColors?.primaryBlack, fontSize:16.sp,fontWeight:FontWeight.w600)),
+            Text(
+              "Add students and create a group to start scheduling sessions.", textAlign: TextAlign.center,style: TextStyle(color: themeColors?.textGrey, fontSize:14.sp,fontWeight:FontWeight.w300 ,),),
+            SizedBox(height: 16.h,),
 
-                  ),),
+            MaterialButton(onPressed: () {},
+              minWidth: double.infinity,
+              color: themeColors?.primaryColour,
+              height: 40.h,
 
-              ],
-            ),
-          );
+              child: Text("Add your first student", style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),),
+            SizedBox(height: 16.h,),
+
+            MaterialButton(onPressed: () {},
+              color: Colors.white,
+              minWidth: double.infinity,
+              height: 40.h,
+
+              child: Text("Create a group"),
+              elevation: 3,
+              shape:RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: BorderSide(
+                      color: themeColors!.primaryBlack.withOpacity(0.08),
+                      width: 2
+                  )
+
+              ),),
+
+          ],
+        ),
+      ),
+    );
   }
 
   Container SessionCard(

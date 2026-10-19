@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
     return Scaffold(
       backgroundColor: themeColors?.backgroundColour,
-      body: BlocBuilder<HomeCubit, HomeState>(
+      body:  BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if(state is TeacherWorkDataLoading){
             return CircularProgressIndicator(color:AppColors.primaryLightColour,);
