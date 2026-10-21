@@ -39,7 +39,6 @@ dependencies:
   drift_flutter: ^0.3.1
   bloc:
   flutter_bloc:
-    
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +59,7 @@ dev_dependencies:
   get_it:
   rxdart:
   shared_preferences:
+
 
 
 # For information on the generic Dart part of this file, see the

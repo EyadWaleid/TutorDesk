@@ -22,6 +22,14 @@ class HomeScreen extends StatelessWidget {
           if(state is TeacherWorkDataLoading){
             return CircularProgressIndicator(color:AppColors.primaryLightColour,);
           }
+          else if(state is TeacherWorkDataFirstTime){
+            return CircularProgressIndicator(color:AppColors.primaryLightColour,);
+
+          }
+          else if(state is TeacherWorkDataEmpty){
+            return CircularProgressIndicator(color:AppColors.primaryLightColour,);
+
+          }
           if(state is TeacherWorkDataLoaded){
             return SingleChildScrollView(
 

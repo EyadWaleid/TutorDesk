@@ -12,7 +12,7 @@ class Routing {
   GoRoute(
   path: '/',
   builder: (context, state) => BlocProvider<HomeCubit>(
-    create: (context) => getIt<HomeCubit>(),
+    create: (context) => getIt<HomeCubit>()..getNumberOfSessions..getUserUpcomingSession..getNumberOfClasses..getNumberOfStudents,
     child: HomeScreen(),
   ),
   ),
