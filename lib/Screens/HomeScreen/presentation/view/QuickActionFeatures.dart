@@ -11,7 +11,6 @@ class QuickActionFeatures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-
     return   Padding(
       padding: const EdgeInsets.all(16),
       child: Container(
@@ -93,9 +92,6 @@ class QuickActionFeatures extends StatelessWidget {
       ),
 
     );
-
-
-
   }
   Column QucikActionsFeatures({required Widget iconFeature,required TutorDeskColours? themeColors ,required Color iconBackgroundColour ,required String featureName}) {
     return  Column(
@@ -117,5 +113,4 @@ class QuickActionFeatures extends StatelessWidget {
       ],
     );
   }
-
 }

@@ -17,61 +17,42 @@ class HomeScreen extends StatelessWidget {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
     return Scaffold(
       backgroundColor: themeColors?.backgroundColour,
-      body:  BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          if(state is TeacherWorkDataLoading){
-            return CircularProgressIndicator(color:AppColors.primaryLightColour,);
-          }
-          else if(state is TeacherWorkDataFirstTime){
-            return CircularProgressIndicator(color:AppColors.primaryLightColour,);
-
-          }
-          else if(state is TeacherWorkDataEmpty){
-            return CircularProgressIndicator(color:AppColors.primaryLightColour,);
-
-          }
-          if(state is TeacherWorkDataLoaded){
-            return SingleChildScrollView(
-
-              child: Column(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            AppBarWidget(),
+            QuickActionFeatures(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
                 children: [
-                  AppBarWidget(),
-                  QuickActionFeatures(),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Upcoming Sessions",
-                          style: TextStyle(
-                            color: themeColors!.primaryBlack,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Spacer(),
-
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "See All",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: themeColors.primaryColour,
-                            ),
-                          ),
-                        ),
-                      ],
+                  Text(
+                    "Upcoming Sessions",
+                    style: TextStyle(
+                      color: themeColors!.primaryBlack,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  UpcomingSessionsWidget()
+                  Spacer(),
+
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "See All",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: themeColors.primaryColour,
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            );
-          }
-          return SizedBox();
-        },
+            ),
+            UpcomingSessionsWidget()
+          ],
+        ),
       ),
     );
   }
