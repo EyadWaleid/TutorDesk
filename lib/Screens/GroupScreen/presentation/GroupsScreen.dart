@@ -39,7 +39,7 @@ class GroupScreen extends StatelessWidget {
     );
   }
 
-  Container GroupCard(TutorDeskColours? themeColors) {
+  Container GroupCard(TutorDeskColours? themeColors)  {
     return Container(
                 height: 134.5,
                 decoration: BoxDecoration(
