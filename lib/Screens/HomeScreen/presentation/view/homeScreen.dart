@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tutordesk/Core/Style/AppColours.dart';
-import 'package:tutordesk/Screens/HomeScreen/presentation/Cubit/home_cubit.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/view/AppbarWidget.dart';
 import 'package:tutordesk/Screens/HomeScreen/presentation/view/QuickActionFeatures.dart';
 import '../../../../Core/Style/coloursExtention.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'UpcomingSessionsWiget.dart';
 

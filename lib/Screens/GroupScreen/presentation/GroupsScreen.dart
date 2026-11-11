@@ -9,37 +9,42 @@ class GroupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-    return Scaffold(
-      body:  Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Text("Groups",style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
-                  Spacer(),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.add))
-                ],
-              ),
-              TextFormField(),
-              ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => GroupCard(themeColors) ,
-                  separatorBuilder: (context, index) => SizedBox(height: 12,),
-                  itemCount: 10)
-
-
-
-            ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: themeColors?.backgroundColour,
+        body:  Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text("Groups",style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
+                    Spacer(),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.add))
+                  ],
+                ),
+/*
+                TextFormField(),
+*/
+                ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => GroupCard(themeColors) ,
+                    separatorBuilder: (context, index) => SizedBox(height: 12,),
+                    itemCount: 10)
+      
+      
+      
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Container GroupCard(TutorDeskColours? themeColors) {
+  Container GroupCard(TutorDeskColours? themeColors)  {
     return Container(
                 height: 134.5,
                 decoration: BoxDecoration(
@@ -52,14 +57,16 @@ class GroupScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text("Hamza",style: TextStyle(fontSize:14 , fontWeight: FontWeight.bold ),),
+                       Spacer(),
                        Column(
                          children: [
-                           Text("150 EGP",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold),),
-                           Text("Per student",style: TextStyle(fontSize: 11 , fontWeight: FontWeight.bold))
+                           Text("150 EGP",style: TextStyle(fontSize: 12 , fontWeight: FontWeight.bold),),
+                           Text("Per student",style: TextStyle(fontSize: 12 , fontWeight: FontWeight.bold))
                          ],
                        )
                         ],
                       ),
+                      Spacer(),
                       Row(
                         children: [
                           Icon(Icons.person_2_outlined),

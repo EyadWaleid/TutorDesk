@@ -13,7 +13,7 @@ class UpcomingSessionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-    return BlocBuilder(
+    return BlocBuilder<HomeCubit , HomeState>(
         buildWhen: (previous, current) => current != previous,
         builder: (context, state) {
           if (state is UpcomingSessionsLoad) {
