@@ -58,13 +58,19 @@ class GroupScreen extends StatelessWidget {
                         children: [
                           Text("Hamza",style: TextStyle(fontSize:14 , fontWeight: FontWeight.bold ),),
                        Spacer(),
-                       Column(
-                         children: [
-                           Text("150 EGP",style: TextStyle(fontSize: 12 , fontWeight: FontWeight.bold),),
-                           Text("Per student",style: TextStyle(fontSize: 12 , fontWeight: FontWeight.bold))
-                         ],
-                       )
+
                         ],
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text("150 EGP",style: TextStyle(fontSize: 14 , fontWeight: FontWeight.bold),),
+                            Text("Per student",style: TextStyle(fontSize: 14 , fontWeight: FontWeight.bold))
+                          ],
+                        ),
                       ),
                       Spacer(),
                       Row(
