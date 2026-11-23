@@ -13,6 +13,7 @@ class ThemeApp {
             enabledButtonColour: AppColors.enabledButtonLightColour,
             textColour: AppColors.textLightColour,
             textGrey: AppColors.lightTextGrey,
+            primaryLightGreen: AppColors.primaryLightGreen,
             primaryColour: AppColors.primaryLightColour, primaryBlack: AppColors.primaryBlack,)
       ]
   );
@@ -23,7 +24,7 @@ class ThemeApp {
             enabledButtonColour: AppColors.enabledButtonDarkColour,
             textColour: AppColors.textDarkColour,
             textGrey: AppColors.darkTextGrey,
-            primaryColour: AppColors.primaryDarkColour, primaryBlack:AppColors.primaryBlack,)
+            primaryColour: AppColors.primaryDarkColour, primaryBlack:AppColors.primaryBlack, primaryLightGreen: AppColors.primaryLightGreen,)
       ]
   );
 }
