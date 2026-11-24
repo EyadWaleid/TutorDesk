@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tutordesk/Core/Style/AppColours.dart';
 
 import '../../../Core/Style/coloursExtention.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class GroupScreen extends StatelessWidget {
 
   const GroupScreen({super.key});
@@ -46,43 +47,80 @@ class GroupScreen extends StatelessWidget {
 
   Container GroupCard(TutorDeskColours? themeColors)  {
     return Container(
-                height: 134.5,
+                height: 113.h,
                 decoration: BoxDecoration(
-                  color: Colors.white
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.symmetric(vertical: 12 ,horizontal: 16),
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          Text("Hamza",style: TextStyle(fontSize:14 , fontWeight: FontWeight.bold ),),
-                       Spacer(),
+                          Container(
+                            width: 44.w,
+                            height: 44.h,
+                            decoration: BoxDecoration(
+                              color: themeColors?.primaryLightGreen,
+                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                            ),
+                            child: Icon(Icons.group , color:themeColors?.primaryColour,),
+                          ),
+                          SizedBox(width: 12.w,),
+                          Text("Hamza",style: TextStyle(fontSize:14.sp , fontWeight: FontWeight.bold),),
+                          Spacer(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text("150 EGP",style: TextStyle(fontSize: 16.sp , fontWeight: FontWeight.bold),),
+                              Text("Per student",style: TextStyle(fontSize: 11.sp , fontWeight: FontWeight.bold, color: themeColors?.textGrey))
+                            ],
+                          ),
+
 
                         ],
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text("150 EGP",style: TextStyle(fontSize: 14 , fontWeight: FontWeight.bold),),
-                            Text("Per student",style: TextStyle(fontSize: 14 , fontWeight: FontWeight.bold))
-                          ],
-                        ),
-                      ),
-                      Spacer(),
+                      SizedBox(height: 15.h,),
                       Row(
                         children: [
-                          Icon(Icons.person_2_outlined),
+                          Icon(Icons.group_outlined,color: themeColors?.textGrey,),
                           Text("3 students",style: TextStyle(fontSize: 12 , color:themeColors!.textGrey),),
                           SizedBox(width: 16,),
-                          Icon(Icons.timer_outlined),
+                          Icon(Icons.access_time_outlined,color:  themeColors?.textGrey,),
                           Text("18:00",style: TextStyle(fontSize:12 , color: themeColors!.textGrey),),
-                          SizedBox(width: 16,),
-                          Icon(Icons.calendar_today_outlined),
-                          Text("Tue . THU",style:  TextStyle(fontSize:12 , color: themeColors!.textGrey),)
+                         /* Icon(Icons.calendar_today_outlined),
+                          Text("Tue . THU",style:  TextStyle(fontSize:12 , color: themeColors!.textGrey),)*/
+                          Spacer(),
+                          SizedBox(
+                            width: 92.w,
+                            height: 30.h,
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              separatorBuilder: (context, index) => SizedBox(width: 10.w),
+                              itemBuilder:(context, index) =>  Container(
+                                    width: 41.w,
+                                    height: 22.h,
+                                    decoration:  BoxDecoration(
+                                        color: themeColors?.primaryOffWhite,
+                                        borderRadius: BorderRadius.circular(8)
+
+                                    ),
+
+                                    child:Center(child: Text("Mon",style: TextStyle(fontSize: 11.sp , color: themeColors.textGrey ),)) ,
+
+
+                                  ),
+                              itemCount: 2,
+                            ),
+                          )
+
+
+
+
+
 
                         ],
                       )

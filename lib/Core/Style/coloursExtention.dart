@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
   Color primaryColour ;
   Color primaryBlack ;
   Color primaryLightGreen ;
+  Color primaryOffWhite;
 
   TutorDeskColours({
     required this.backgroundColour,
@@ -18,7 +19,9 @@ import 'package:flutter/material.dart';
     required this.textGrey,
     required this.primaryColour,
     required this.primaryBlack,
-  required this.primaryLightGreen });
+  required this.primaryLightGreen,
+    required this.primaryOffWhite,
+  });
 
 
   @override
@@ -30,7 +33,8 @@ import 'package:flutter/material.dart';
     Color? textGrey,
     Color? primaryColour,
     Color? primaryBlack ,
-    Color? primaryLightGreen
+    Color? primaryLightGreen,
+    Color? primaryOffWhite
   }) {
     return TutorDeskColours(
       backgroundColour: backgroundColour ?? this.backgroundColour,
@@ -39,7 +43,7 @@ import 'package:flutter/material.dart';
       textColour: textColour ?? this.textColour,
       textGrey: textGrey ?? this.textGrey,
       primaryColour: primaryColour ?? this.primaryColour,
-      primaryBlack: primaryBlack ?? this.primaryBlack, primaryLightGreen: primaryLightGreen ?? this.primaryLightGreen,
+      primaryBlack: primaryBlack ?? this.primaryBlack, primaryLightGreen: primaryLightGreen ?? this.primaryLightGreen, primaryOffWhite:this.primaryOffWhite ?? this.primaryOffWhite,
     );
   }
 
@@ -50,6 +54,7 @@ import 'package:flutter/material.dart';
       ) {
     if (other is! TutorDeskColours) return this;
     return TutorDeskColours(
+      primaryOffWhite: Color.lerp(primaryOffWhite, other.primaryOffWhite, t)!,
       backgroundColour: Color.lerp(
         backgroundColour,
         other.backgroundColour,
