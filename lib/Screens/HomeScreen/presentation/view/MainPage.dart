@@ -5,11 +5,9 @@ import '../../../../Core/Style/coloursExtention.dart';
 class ScaffoldWithNavBar extends StatelessWidget {
   const ScaffoldWithNavBar({super.key, required this.navigationShell});
   final StatefulNavigationShell navigationShell;
-
   @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<TutorDeskColours>();
-
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBarTheme(data: NavigationBarThemeData(
@@ -31,7 +29,6 @@ class ScaffoldWithNavBar extends StatelessWidget {
               color: themeColors?.textGrey ,
               fontSize: 10 ,
           );
-
         })
       ),
           child: NavigationBar(

@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               AppBarWidget(),
               QuickActionFeatures(),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
                     Text(
@@ -35,13 +35,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-
                     TextButton(
                       onPressed: () {},
                       child: Text(
                         "See All",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: themeColors.primaryColour,
                         ),

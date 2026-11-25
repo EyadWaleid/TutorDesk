@@ -11,26 +11,23 @@ class Routing {
   static final  GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
-  StatefulShellRoute.indexedStack(
-  builder: (context, state, navigationShell) =>
-      ScaffoldWithNavBar(navigationShell: navigationShell),
-branches: [
-  StatefulShellBranch(routes: [
-  GoRoute(
-  path: '/',
-  builder: (context, state) => BlocProvider<HomeCubit>(
-  create: (context) => getIt<HomeCubit>()..getNumberOfSessions..getUserUpcomingSession..getNumberOfClasses..getNumberOfStudents,
-  child: HomeScreen(),
-  ))
-  ]),
-  StatefulShellBranch(routes: [
-    GoRoute(path: '/search', builder: (_, __) => const GroupScreen()),
-  ]),
-  StatefulShellBranch(routes: [
-    GoRoute(path: '/profile', builder: (_, __) => const HomeScreen()),
-  ]),
-],
-  )
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) => BlocProvider<HomeCubit>(
+        create: (_) => getIt<HomeCubit>()..watchTeacherWorkData()..watchUpcomingSessions(),
+        child: ScaffoldWithNavBar(navigationShell: navigationShell),
+      ),
+      branches: [
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/search', builder: (_, __) => const GroupScreen()),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/profile', builder: (_, __) => const HomeScreen()),
+        ]),
+      ],
+    ),
 ],
   );
 }

@@ -17,11 +17,15 @@ class UpcomingSessionsWidget extends StatelessWidget {
         buildWhen: (previous, current) => current != previous,
         builder: (context, state) {
           if (state is UpcomingSessionsLoad) {
+            print("The state is $state");
+
             return CircularProgressIndicator(
               color: AppColors.primaryLightColour,);
           }
           if (state is UpcomingSessionsEmpty) {
+            print("The state is $state");
             return Container(
+              margin:EdgeInsets.all(16.sp),
               width: 385.w,
               height: 312.h,
               decoration: BoxDecoration(
@@ -113,9 +117,12 @@ class UpcomingSessionsWidget extends StatelessWidget {
 
           }
           if (state is UpcomingSessionsFirstTime) {
+            print("The state is $state");
+
             return FirstTimeUpcomingSessions(themeColors);
           }
           if (state is UpcomingSessionsLoaded) {
+            print("The state is $state");
             return UpcomingSesssionsFound(themeColors);
           }
           return SizedBox();

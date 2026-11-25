@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tutordesk/Core/Style/AppColours.dart';
+import 'package:tutordesk/Screens/GroupScreen/presentation/CreatGroupSheet.dart';
 
 import '../../../Core/Style/coloursExtention.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../Core/Widgets/MainTextFormField.dart';
 class GroupScreen extends StatelessWidget {
 
   const GroupScreen({super.key});
@@ -22,17 +25,23 @@ class GroupScreen extends StatelessWidget {
                   children: [
                     Text("Groups",style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
                     Spacer(),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.add))
+                    IconButton(onPressed:  () =>  showModalBottomSheet(context:context , builder: (context) => CreateGroupSheet(),
+                      isScrollControlled: true, // allows a tall sheet
+                      useSafeArea: true,        // stays clear of the status bar
+                      showDragHandle: true,     // the small grey bar on top
+                      backgroundColor: Colors.white,), icon: Icon(Icons.add))
                   ],
                 ),
-/*
-                TextFormField(),
-*/
+                MainTextFormFiled(themeColors: themeColors , hintText: "Search for groups" ),
+                SizedBox(height: 15.h,),
                 ListView.separated(
                     shrinkWrap: true,
+                    padding: EdgeInsets.only(
+                      bottom: 20.h,
+                    ),
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) => GroupCard(themeColors) ,
-                    separatorBuilder: (context, index) => SizedBox(height: 12,),
+                    separatorBuilder: (context, index) => SizedBox(height: 12.h,),
                     itemCount: 10)
       
       
@@ -131,3 +140,4 @@ class GroupScreen extends StatelessWidget {
                 );
   }
 }
+

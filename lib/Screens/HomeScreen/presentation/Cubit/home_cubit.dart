@@ -62,6 +62,7 @@ class HomeCubit extends Cubit<HomeState> {
   /// 2. WATCH REAL-TIME UPCOMING SESSIONS
   void watchUpcomingSessions() {
     emit(UpcomingSessionsLoad());
+    print("I'm loading the upcoming sessions");
 
     // Cancel existing subscription to prevent leaks
     _upcomingSessionsSubscription?.cancel();
@@ -72,6 +73,8 @@ class HomeCubit extends Cubit<HomeState> {
         .listen(
           (sessions) {
             if(sessions.isEmpty){
+              print("I'm Emptyyyyyyyyyyyyyy upcoming sessions");
+
               emit(UpcomingSessionsEmpty(message: "The sessions is empty"));
             }
             else {
@@ -80,6 +83,7 @@ class HomeCubit extends Cubit<HomeState> {
             }
       },
       onError: (error) {
+        print("I'm Errorrrrrrrrrrrrrrrrr upcoming sessions: $error");
         emit(UpcomingSessionsError(
             errorMessage: 'Failed to watch upcoming sessions: $error'));
       },
