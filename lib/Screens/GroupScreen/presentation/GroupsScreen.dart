@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tutordesk/Core/Style/AppColours.dart';
 import 'package:tutordesk/Screens/GroupScreen/presentation/CreatGroupSheet.dart';
 
 import '../../../Core/Style/coloursExtention.dart';
@@ -8,7 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../Core/Widgets/MainTextFormField.dart';
 class GroupScreen extends StatelessWidget {
 
-  const GroupScreen({super.key});
+   GroupScreen({super.key});
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class GroupScreen extends StatelessWidget {
                       backgroundColor: Colors.white,), icon: Icon(Icons.add))
                   ],
                 ),
-                MainTextFormFiled(themeColors: themeColors , hintText: "Search for groups" ),
+                MainTextFormFiled(themeColors: themeColors , hintText: "Search for groups", controller: searchController, ),
                 SizedBox(height: 15.h,),
                 ListView.separated(
                     shrinkWrap: true,

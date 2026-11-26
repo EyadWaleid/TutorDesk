@@ -21,7 +21,7 @@ class Routing {
           GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
         ]),
         StatefulShellBranch(routes: [
-          GoRoute(path: '/search', builder: (_, __) => const GroupScreen()),
+          GoRoute(path: '/search', builder: (_, __) =>  GroupScreen()),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(path: '/profile', builder: (_, __) => const HomeScreen()),
